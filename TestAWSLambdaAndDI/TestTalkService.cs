@@ -23,12 +23,7 @@ namespace TestAWSLambdaAndDI
         [TestMethod]
         public void Input_Null_Should_Return_hello()
         {
-            var talkService = new TalkService();
-            string name = null;
-            var actual = talkService.SayHello(name);
-            var expect = ": hello!";
-
-            Assert.AreEqual(expect, actual);
+            AssertTalkService(null, ": hello!");
         }
 
         private void AssertTalkService(string name, string expectResult)
