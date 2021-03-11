@@ -17,9 +17,11 @@ namespace AWSLambdaAndDI
             var serviceCollection = new ServiceCollection();
             ConfigureServices(serviceCollection);
             var serviceProvider = serviceCollection.BuildServiceProvider();
+            // get talkService instance from DI System
             this._talkService = serviceProvider.GetService<ITalkService>();
         }
 
+        // Use this ctor from unit tests that can mock talkService
         public Function(ITalkService talkService)
         {
             this._talkService = talkService;
