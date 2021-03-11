@@ -30,5 +30,12 @@ namespace TestAWSLambdaAndDI
 
             Assert.AreEqual(expect, actual);
         }
+
+        private void AssertTalkService(string name, string expectResult)
+        {
+            var talkService = new TalkService();
+            var actual = talkService.SayHello(name);
+            Assert.AreEqual(expectResult, actual);
+        }
     }
 }
