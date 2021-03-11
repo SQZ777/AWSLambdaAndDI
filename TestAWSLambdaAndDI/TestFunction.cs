@@ -19,5 +19,18 @@ namespace TestAWSLambdaAndDI
 
             Assert.AreEqual("Darren: hello!", actual);
         }
+
+        [TestMethod]
+        public void TestMainFunction_Input_null_Should_Return_Darren_hello()
+        {
+            string input = null;
+            var mockTalkService = new Mock<ITalkService>();
+            mockTalkService.Setup(x => x.SayHello(input)).Returns(input + ": hello!");
+            var function = new Function(mockTalkService.Object);
+
+            var actual = function.FunctionHandler(input, new TestLambdaContext());
+
+            Assert.AreEqual(": hello!", actual);
+        }
     }
 }
