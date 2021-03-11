@@ -10,14 +10,7 @@ namespace TestAWSLambdaAndDI
         [TestMethod]
         public void TestMainFunction_Input_Darren_Should_Return_Darren_hello()
         {
-            var input = "Darren";
-            var mockTalkService = new Mock<ITalkService>();
-            mockTalkService.Setup(x => x.SayHello(input)).Returns(input + ": hello!");
-            var function = new Function(mockTalkService.Object);
-
-            var actual = function.FunctionHandler(input, new TestLambdaContext());
-
-            Assert.AreEqual("Darren: hello!", actual);
+            TestMainFunction("Darren", "Darren: hello!");
         }
 
         [TestMethod]
