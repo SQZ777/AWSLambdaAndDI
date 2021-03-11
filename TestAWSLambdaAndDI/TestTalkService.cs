@@ -12,12 +12,7 @@ namespace TestAWSLambdaAndDI
         [TestMethod]
         public void Input_Darren_Should_Return_Darren_hello()
         {
-            var talkService = new TalkService();
-            var name = "Darren";
-            var actual = talkService.SayHello(name);
-            var expect = "Darren: hello!";
-
-            Assert.AreEqual(expect, actual);
+            AssertTalkService("Darren", "Darren: hello!");
         }
 
         [TestMethod]
